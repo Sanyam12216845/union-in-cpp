@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+union Data {
+    int integerValue;
+    float floatValue;
+    char charValue;
+};
+
+int main() {
+    Data data;
+
+    // Storing an integer in the union
+    data.integerValue = 42;
+    cout << "Integer value: " << data.integerValue << endl;
+
+    // Storing a float in the same memory location (overwrites the integer)
+    data.floatValue = 3.14;
+    cout << "Float value: " << data.floatValue << endl;
+
+    // Storing a character in the same memory location (overwrites the float)
+    data.charValue = 'A';
+    cout << "Character value: " << data.charValue << endl;
+
+    // The integer and float values are now overwritten and cannot be accessed correctly
+    cout << "After storing char, Integer value: " << data.integerValue << endl;
+    cout << "After storing char, Float value: " << data.floatValue << endl;
+
+    return 0;
+}
+
